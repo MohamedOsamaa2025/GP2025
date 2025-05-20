@@ -1,0 +1,11 @@
+<launch>
+    <node pkg="depthimage_to_laserscan" type="depthimage_to_laserscan" name="depth_to_scan">
+        <param name="output_frame_id" value="camera_link"/>
+        <param name="range_min" value="0.5"/>  <!-- Minimum valid range -->
+        <param name="range_max" value="5.0"/>  <!-- Maximum valid range -->
+        <param name="scan_height" value="10"/>  <!-- Number of rows from the depth image used for scan -->
+        <remap from="image" to="/camera/depth_registered/image_raw"/>
+        <remap from="camera_info" to="/camera/depth_registered/camera_info"/>
+        <remap from="scan" to="/camera/scan"/>  <!-- Output topic -->
+    </node>
+</launch>
