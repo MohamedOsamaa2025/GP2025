@@ -1,0 +1,26 @@
+global_costmap:
+  global_frame: map
+  robot_base_frame: robot_footprint
+  update_frequency: 1.0 #before: 5.0 ###########
+  publish_frequency: 0.5 #before 0.5 ###############
+  static_map: true
+  transform_tolerance: 0.5
+  cost_scaling_factor: 10.0
+  inflation_radius: 0.3
+
+  width: 19.2
+  height: 19.2
+  origin_x: -10.0
+  origin_y: -10.0
+  # trace_unknown_space: false
+  # unknown_cost_value: 255
+  plugins:
+    - {name: static_layer, type: "costmap_2d::StaticLayer"} # Pre-loaded map
+    - {name: obstacle_layer, type: "costmap_2d::ObstacleLayer"} # Dynamic obstacles
+    - {name: inflation_layer, type: "costmap_2d::InflationLayer"} # Inflate obstacles
+
+# static_layer:
+#   map_topic: /map 
+#   subcribe_to_ubdates: true
+#   lethal_cost_threshold: 100
+    
